@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Added
+
+- `list_tests_abl` and `run_tests_abl` MCP tools: list and run ABLUnit tests (whole workspace, one file, or a single test) and return the totals plus failure messages and call stacks. They bridge to the `ablunit_list_tests`/`ablunit_run_tests` Language Model tools of the ABLUnit Test Runner extension (`kherring.ablunit-test-runner`), which require a version of that extension with Language Model tool support. Toggle them with the new `ablunit` entry of `vscode-abl-mcp.enabledTools`.
+
 ## [0.5.0] - 2026-10-17 (pre-release)
 
 ### Added

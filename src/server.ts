@@ -13,6 +13,7 @@ import { registerShellTools } from "./tools/shell-tools";
 import { registerDiagnosticsTools } from "./tools/diagnostics-tools";
 import { registerSymbolTools } from "./tools/symbol-tools";
 import { registerAblTools } from "./tools/abl";
+import { registerAblUnitTools } from "./tools/ablunit";
 import { logger } from "./utils/logger";
 
 export interface TransportConfiguration {
@@ -31,6 +32,7 @@ export interface ToolConfiguration {
   diagnostics: boolean;
   symbol: boolean;
   abl: boolean;
+  ablunit: boolean;
 }
 
 export class MCPServer {
@@ -67,6 +69,7 @@ export class MCPServer {
       diagnostics: true,
       symbol: true,
       abl: true,
+      ablunit: true,
     };
     // Defaults keep this class usable standalone (e.g. in tests); the
     // extension itself always passes explicit transport settings.
@@ -123,6 +126,9 @@ export class MCPServer {
     }
     if (this.toolConfig.abl) {
       registerAblTools(server);
+    }
+    if (this.toolConfig.ablunit) {
+      registerAblUnitTools(server);
     }
 
     return server;

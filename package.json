@@ -95,7 +95,8 @@
             "shell": false,
             "diagnostics": true,
             "symbol": true,
-            "abl": true
+            "abl": true,
+            "ablunit": true
           },
           "properties": {
             "file": {
@@ -121,6 +122,10 @@
             "abl": {
               "type": "boolean",
               "description": "Enable ABL tools"
+            },
+            "ablunit": {
+              "type": "boolean",
+              "description": "Enable ABLUnit test tools (requires the ABLUnit Test Runner extension)"
             }
           },
           "description": "Configure which MCP tools are enabled",

@@ -59,6 +59,7 @@ function getToolConfiguration(): ToolConfiguration {
     diagnostics: enabledTools.diagnostics ?? true,
     symbol: enabledTools.symbol ?? true,
     abl: enabledTools.abl ?? true,
+    ablunit: enabledTools.ablunit ?? true,
   };
 }
 

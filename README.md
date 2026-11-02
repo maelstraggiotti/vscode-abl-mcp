@@ -10,6 +10,7 @@ The ABL tools bridge to the Language Model tools contributed by the [OpenEdge AB
 
 - VS Code 1.99+
 - For the ABL tools: `RiversideSoftware.openedge-abl-lsp` **1.33.7 or later** (**1.33.9+** for `check_syntax_abl`), with a configured OpenEdge project (`openedge-project.json`)
+- For the ABLUnit tools: `kherring.ablunit-test-runner` with Language Model tool support (`ablunit_list_tests`, `ablunit_run_tests`)
 
 ## Installation
 
@@ -59,6 +60,22 @@ If both are enabled, the **Install Config** command prefers the pipe transport.
 
   - Parameters:
     - `path` (optional): Path of the file to process. Defaults to the active editor.
+
+## ABLUnit Tools
+
+These bridge to the Language Model tools contributed by the [ABLUnit Test Runner extension](https://marketplace.visualstudio.com/items?itemName=kherring.ablunit-test-runner) (`kherring.ablunit-test-runner`), so tests are discovered and run with the same configuration as its Test Explorer integration (`.vscode/ablunit-test-profile.json`, `openedge-project.json`). They require a version of that extension that contributes the `ablunit_list_tests` and `ablunit_run_tests` Language Model tools.
+
+- **list_tests_abl**: Lists the ABLUnit tests (test classes, programs, suites and their test methods/procedures).
+
+  - Parameters:
+    - `path` (optional): Test file to list. Defaults to every test in the workspace.
+
+- **run_tests_abl**: Runs ABLUnit tests and returns the totals plus, for each test that did not pass, its failure message, expected/actual values and call stack. Compile errors and ABLUnit runtime errors are reported as well.
+
+  - Parameters:
+    - `path` (optional): Test file to run. Defaults to every test in the workspace.
+    - `testName` (optional): A single test method or procedure inside `path`, as returned by `list_tests_abl`.
+  - Runs against the files saved on disk.
 
 ## Client Configuration
 
@@ -201,7 +218,7 @@ Besides the ABL tools, the server exposes VS Code workspace capabilities, each c
 - `vscode-abl-mcp.httpEnabled`: Enable the HTTP transport on a fixed TCP port (default: false)
 - `vscode-abl-mcp.host`: Host address for the MCP server, used only when the HTTP transport is enabled (default: 127.0.0.1)
 - `vscode-abl-mcp.port`: The port number for the MCP server, used only when the HTTP transport is enabled (default: 3000)
-- `vscode-abl-mcp.enabledTools`: Configure which tool categories are enabled (file, edit, shell, diagnostics, symbol, abl)
+- `vscode-abl-mcp.enabledTools`: Configure which tool categories are enabled (file, edit, shell, diagnostics, symbol, abl, ablunit)
 
 **Selective Tool Configuration**: Useful for coding agents that already have certain capabilities. For example, with Claude Code you might disable the file/edit/shell tools and only enable the abl and symbol tools, adding ABL compilation and VS Code symbol search without duplicating tools the agent already has.
 

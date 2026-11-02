@@ -9,6 +9,7 @@ How to build, test, debug and maintain the vscode-abl-mcp extension.
 | `src/extension.ts` | Extension entry point: status bar, commands, server lifecycle |
 | `src/server.ts` | Express + MCP server (streamable HTTP on `/mcp`) |
 | `src/tools/abl.ts` | ABL bridge: MCP tools → `vscode.lm.invokeTool` (`abl_compile`, `abl_check_syntax`, `abl_xref`, `abl_preprocess`, `abl_debug_listing`, `abl_listing`) |
+| `src/tools/ablunit.ts` | ABLUnit bridge: MCP tools → `vscode.lm.invokeTool` (`ablunit_list_tests`, `ablunit_run_tests` from `kherring.ablunit-test-runner`) |
 | `src/tools/*.ts` | Generic VS Code tools (file, edit, shell, diagnostics, symbol) |
 | `src/test/` | Integration tests (run inside a VS Code test instance) |
 | `related/` | Reference material, **not part of the build** — see below |
